@@ -6,6 +6,6 @@ namespace College_Web.Models
     public class AppIdentityDbContext : IdentityDbContext
     {
         public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options) : base(options) { }
-        public DbSet<User> User { get; set; }
+        public DbSet<UserApp> UserApp { get; set; }
     }
 }
