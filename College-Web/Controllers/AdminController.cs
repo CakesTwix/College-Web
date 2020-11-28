@@ -7,33 +7,33 @@ namespace Identity.Controllers
 {
     public class AdminController : Controller
     {
-        private UserManager<User> userManager;
+        private UserManager<UserApp> userManager;
 
-        public AdminController(UserManager<User> usrMgr)
+        public AdminController(UserManager<UserApp> usrMgr)
         {
             userManager = usrMgr;
         }
 
-        public IActionResult Index()
+        public ActionResult Index()
         {
             return View();
         }
         public ViewResult Create() => View();
 
         [HttpPost]
-        public async Task<IActionResult> Create(User user)
+        public async Task<ActionResult> Create(UserApp user)
         {
             if (ModelState.IsValid)
             {
-                User appUser = new User
+                UserApp appUser = new UserApp
                 {
-                    Login = user.Login,
+                    UserName = user.Name,
                     Email = user.Email
                 };
 
                 IdentityResult result = await userManager.CreateAsync(appUser, user.Password);
                 if (result.Succeeded)
-                    return RedirectToAction("Index");
+                    return RedirectToRoute(new { controller = "Home", action = "Index" });
                 else
                 {
                     foreach (IdentityError error in result.Errors)
