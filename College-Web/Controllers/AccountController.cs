@@ -5,11 +5,11 @@ using College_Web.Models;
 
 namespace Identity.Controllers
 {
-    public class AdminController : Controller
+    public class AccountController : Controller
     {
         private UserManager<UserApp> userManager;
 
-        public AdminController(UserManager<UserApp> usrMgr)
+        public AccountController(UserManager<UserApp> usrMgr)
         {
             userManager = usrMgr;
         }
