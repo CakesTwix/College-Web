@@ -51,6 +51,7 @@ namespace Identity.Controllers
             return View(login);
         }
 
+
         [HttpPost]
         public async Task<ActionResult> Create(UserApp user)
         {
@@ -62,13 +63,26 @@ namespace Identity.Controllers
                     Email = user.Email
                 };
 
-                IdentityResult result = await userManager.CreateAsync(appUser, user.Password);
+                var result = await userManager.CreateAsync(appUser, user.Password);
+
+                // If user is successfully created, sign-in the user using
+                // SignInManager and redirect to index action of HomeController
                 if (result.Succeeded)
-                    return RedirectToRoute(new { controller = "Home", action = "Index" });
-                else
                 {
-                    foreach (IdentityError error in result.Errors)
-                        ModelState.AddModelError("", error.Description);
+                    //Set role "User" as default role
+                    result = await userManager.AddToRoleAsync(appUser, "Student");
+                    if (result.Succeeded)
+                    {
+                        await signInManager.SignInAsync(appUser, isPersistent: false);
+                        return RedirectToAction("index", "home");
+                    }
+                }
+
+                // If there are any errors, add them to the ModelState object
+                // which will be displayed by the validation summary tag helper
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
             return View(user);
