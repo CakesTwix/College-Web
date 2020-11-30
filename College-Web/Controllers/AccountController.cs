@@ -38,7 +38,7 @@ namespace Identity.Controllers
         {
             if (ModelState.IsValid)
             {
-                UserApp appUser = await userManager.FindByEmailAsync(login.Email);
+                UserApp appUser = await userManager.FindByNameAsync(login.Name);
                 if (appUser != null)
                 {
                     await signInManager.SignOutAsync();
@@ -46,7 +46,7 @@ namespace Identity.Controllers
                     if (result.Succeeded)
                         return Redirect(login.ReturnUrl ?? "/");
                 }
-                ModelState.AddModelError(nameof(login.Email), "Login Failed: Invalid Email or password");
+                ModelState.AddModelError(nameof(login.Name), "Login Failed: Invalid Name or password");
             }
             return View(login);
         }
@@ -74,7 +74,7 @@ namespace Identity.Controllers
                     if (result.Succeeded)
                     {
                         await signInManager.SignInAsync(appUser, isPersistent: false);
-                        return RedirectToAction("index", "home");
+                        return RedirectToAction("Index", "Home");
                     }
                 }
 
@@ -86,6 +86,11 @@ namespace Identity.Controllers
                 }
             }
             return View(user);
+        }
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
