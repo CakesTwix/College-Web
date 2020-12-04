@@ -53,6 +53,7 @@ namespace Identity.Controllers
 
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult> Create(UserApp user)
         {
             if (ModelState.IsValid)

@@ -40,7 +40,7 @@ namespace College_Web.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("index", "home");
+                    return RedirectToAction("Index", "Role");
                 }
 
                 foreach (IdentityError error in result.Errors)
@@ -157,6 +157,57 @@ namespace College_Web.Controllers
             }
 
             return RedirectToAction("EditRole", new { Id = roleId });
+        }
+        [HttpGet]
+        public async Task<IActionResult> Delete(string id)
+        {
+            IdentityRole role = await roleManager.FindByIdAsync(id);
+
+            var model = new Details
+            {
+                Id = role.Id,
+                RoleName = role.Name
+            };
+
+            foreach (var user in userManager.Users)
+            {
+                // Need to set MultipleActiveResultSets=true to connection string
+                // If the user is in this role, add the username to
+                // Users property of Details
+                if (await userManager.IsInRoleAsync(user, role.Name))
+                {
+                    model.Users.Add(user.UserName);
+                }
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(Details model)
+        {
+            var role = await roleManager.FindByIdAsync(model.Id);
+            if (role == null)
+            {
+                ViewBag.ErrorMessage = $"Role with Id = {model.Id} cannot be found";
+                return View("NotFound");
+            }
+            else
+            {
+                var result = await roleManager.DeleteAsync(role);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+                return View("Index");
+            }
         }
     }
 }
