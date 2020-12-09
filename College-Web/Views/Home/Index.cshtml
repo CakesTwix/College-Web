@@ -1,8 +1,29 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<link rel="stylesheet" type="text/css" href="~/css/Index.css" />
+<div class="otk-image d-flex flex-column justify-content-between align-self-stretch" style="height: 100vh; width: 100vh">
+    <h1 class="welcome">Добро пожаловать в College-Web</h1>
+    @if (User.Identity.IsAuthenticated == false)
+    {
+        <div class="p-2 d-flex flex-row justify-content-center">
+            <a style="margin-right: 10px" class="btn btn-primary btn-sm" asp-controller="Account" asp-action="Create">Зарегистрируйтесь!</a>
+            <a class="btn btn-primary btn-sm" asp-controller="Account" asp-action="Login">Если есть аккаунт - войдите</a>
+        </div>
+    }
+</div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="title">
+    <span>
+        Почемы именно мы?
+    </span>
+</div>
+
+<div class="d-flex flex-row justify-content-between align-self-stretch" style="height: 100vh; width: 100vh">
+    <div class="p-0">
+        <h1 style="font-size: 60px; text-align: center; margin-top: 100px">Легкий доступ и просмотр данных студентов вашего учебного учереждения!</h1>
+        <h1 style="font-size: 60px; text-align: right; margin-top: 100px">Простота использования.</h1>
+        <h1 style="font-size: 60px; text-align: left; margin-top: 100px">Безопасность.</h1>
+        <h1 style="font-size: 60px; text-align: right; margin-top: 100px">Легкость.</h1>
+    </div>
 </div>
