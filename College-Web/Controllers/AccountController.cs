@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using College_Web.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Identity.Controllers
 {
@@ -90,6 +92,7 @@ namespace Identity.Controllers
         }
         public async Task<IActionResult> Logout()
         {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
