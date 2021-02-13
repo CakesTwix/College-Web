@@ -5,6 +5,7 @@ using College_Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Collections.Generic;
 
 namespace Identity.Controllers
 {
@@ -52,7 +53,6 @@ namespace Identity.Controllers
             }
             return View(login);
         }
-
 
         [HttpPost]
         [AllowAnonymous]

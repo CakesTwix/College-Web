@@ -25,7 +25,10 @@ namespace College_Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
-            services.AddIdentity<UserApp, IdentityRole>().AddEntityFrameworkStores<AppIdentityDbContext>().AddDefaultTokenProviders();
+            services.AddIdentity<UserApp, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDbContext>()
+                .AddDefaultTokenProviders()
+                .AddEntityFrameworkStores<AppIdentityDbContext>();
             services.AddControllersWithViews();
             services.Configure<IdentityOptions>(opts => {
                 opts.Password.RequireNonAlphanumeric = false;
@@ -53,6 +56,7 @@ namespace College_Web
                options.Scope.Add("profile");
                options.Scope.Add("offline_access");
                options.SaveTokens = true;
+                // Enable the authorization, logout, token and userinfo endpoints.
             });
 
             services.AddAuthorization();
