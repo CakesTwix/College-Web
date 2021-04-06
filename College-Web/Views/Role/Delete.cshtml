@@ -1,9 +1,9 @@
 ﻿@model Details
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Детали";
 }
 
-<h1>Delete</h1>
+<h1>Удалить</h1>
 
 <div>
     <h4>@Model.RoleName</h4>
@@ -17,11 +17,11 @@
         </dd>
     </dl>
     <div>
-        <a asp-action="EditRole" asp-route-id="@Model.Id">Edit</a>
+        <a asp-action="EditRole" asp-route-id="@Model.Id">Редактировать</a>
     </div>
 
     <div class="card-header">
-        <h3>Users in this role</h3>
+        <h3>Пользователи в этой группе</h3>
     </div>
     <div class="card-body">
         @if (Model.Users.Any())
@@ -33,13 +33,13 @@
         }
         else
         {
-            <h5 class="card-title">None at the moment</h5>
+            <h5 class="card-title">Никого на данный момент</h5>
         }
     </div>
 </div>
 <div>
     <form asp-action="Delete">
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Cancel</a>
+        <input type="submit" value="Удалить" class="btn btn-danger" /> |
+        <a asp-action="Index">Отмена</a>
     </form>
 </div> 

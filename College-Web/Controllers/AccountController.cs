@@ -49,7 +49,7 @@ namespace Identity.Controllers
                     if (result.Succeeded)
                         return Redirect(login.ReturnUrl ?? "/");
                 }
-                ModelState.AddModelError(nameof(login.Name), "Login Failed: Invalid Name or password");
+                ModelState.AddModelError(nameof(login.Name), "Что-то не так: Неверный логин или пароль");
             }
             return View(login);
         }

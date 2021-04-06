@@ -20,18 +20,18 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Главная страница</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Конфиденциальность</a>
                         </li>
                         <li class="nav-item dropdown navbar-nav ml-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Account" asp-action="Create">Register</a>
+                            <a class="nav-link" asp-controller="Account" asp-action="Create">Регистрация</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
+                            <a class="nav-link" asp-controller="Account" asp-action="Login">Вход</a>
                         </li>
                     </ul>
                 </div>
@@ -41,7 +41,6 @@
     <div class="d-flex flex-row row h-100" style="height: 100%">
         <div class="p-2">
             <h1 class="col-sm-12 my-auto" style="color: aliceblue">Добро пожаловать на College-Web</h1>
-            <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
         </div>
         <div class="p-2">
             <div asp-validation-summary="All" class="text-danger"></div>
@@ -59,7 +58,7 @@
                     <label asp-for="Password"></label>
                     <input asp-for="Password" class="form-control" />
                 </div>
-                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="submit" class="btn btn-primary">Создать</button>
             </form>
         </div>
     </div>

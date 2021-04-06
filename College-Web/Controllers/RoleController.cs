@@ -67,7 +67,7 @@ namespace College_Web.Controllers
 
             if (role == null)
             {
-                ViewBag.ErrorMessage = $"Role with Id = {id} cannot be found";
+                ViewBag.ErrorMessage = $"Роль с Id = {id} не найден";
                 return View("NotFound");
             }
 
@@ -101,7 +101,7 @@ namespace College_Web.Controllers
 
             if (role == null)
             {
-                ViewBag.ErrorMessage = $"Role with Id = {roleId} cannot be found";
+                ViewBag.ErrorMessage = $"Роль с Id = {roleId} не найден";
                 return View("NotFound");
             }
 
@@ -127,7 +127,7 @@ namespace College_Web.Controllers
 
             if (role == null)
             {
-                ViewBag.ErrorMessage = $"Role with Id = {roleId} cannot be found";
+                ViewBag.ErrorMessage = $"Роль с Id = {roleId} не найден";
                 return View("NotFound");
             }
 
@@ -151,7 +151,7 @@ namespace College_Web.Controllers
 
                 if (!result.Succeeded)
                 {
-                    ViewBag.ErrorMessage = $"Can not save role for {item.UserName}";
+                    ViewBag.ErrorMessage = $"Нельзя сохранить роль для {item.UserName}";
                     return View("NotFound");
                 }
             }
@@ -189,7 +189,7 @@ namespace College_Web.Controllers
             var role = await roleManager.FindByIdAsync(model.Id);
             if (role == null)
             {
-                ViewBag.ErrorMessage = $"Role with Id = {model.Id} cannot be found";
+                ViewBag.ErrorMessage = $"Роль с Id = {model.Id} не найден";
                 return View("NotFound");
             }
             else

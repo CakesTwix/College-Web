@@ -3,10 +3,10 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    ViewBag.Title = "Edit Role";
+    ViewBag.Title = "Редактирование роли";
 }
 
-<h1>Edit Role</h1>
+<h1>Редактировать роль</h1>
 
 <form method="post" class="mt-3">
     <div class="form-group row">
@@ -27,14 +27,14 @@
 
     <div class="form-group row">
         <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Update</button>
-            <a asp-action="Index" class="btn btn-primary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Обновить</button>
+            <a asp-action="Index" class="btn btn-primary">Отмена</a>
         </div>
     </div>
 
     <div class="card">
         <div class="card-header">
-            <h3>Users in this role</h3>
+            <h3>Пользователей в этой роли</h3>
         </div>
         <div class="card-body">
             @if (Model.Users.Any())
@@ -46,13 +46,13 @@
             }
             else
             {
-                <h5 class="card-title">None at the moment</h5>
+                <h5 class="card-title">Никого на данный момент</h5>
             }
         </div>
         <div class="card-footer">
             <a asp-controller="Role" asp-action="EditUsersInRole"
                asp-route-roleId="@Model.Id" class="btn btn-primary">
-                Add or remove users
+                Добавить или удалить пользователей
             </a>
         </div>
     </div>
