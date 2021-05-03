@@ -5,7 +5,7 @@ using College_Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace Identity.Controllers
 {
@@ -13,16 +13,25 @@ namespace Identity.Controllers
     {
         private UserManager<UserApp> userManager;
         private SignInManager<UserApp> signInManager;
+        private AppIdentityDbContext db;
 
-        public AccountController(UserManager<UserApp> usrMgr, SignInManager<UserApp> signinMgr)
+        public AccountController(UserManager<UserApp> usrMgr, SignInManager<UserApp> signinMgr, AppIdentityDbContext context)
         {
             userManager = usrMgr;
             signInManager = signinMgr;
+            db = context;
         }
 
         public ActionResult Index()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult UpdateInfo(StudentModel studentModel)
+        {
+            db.Student.Add(studentModel);
+            db.SaveChanges();
+            return RedirectToAction("/");
         }
         public ViewResult Create() => View();
 

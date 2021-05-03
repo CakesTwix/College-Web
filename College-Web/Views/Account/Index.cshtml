@@ -4,4 +4,12 @@
 }
 
 <h1>Cabinet</h1>
-
+<br>
+<h1>Ваша информация</h1>
+@using (Html.BeginForm("UpdateInfo", "Account", FormMethod.Post))
+{
+    <input type="hidden" value="@ViewBag.ID" name="ID" />
+    <p>Введите свое имя: </p>
+    @Html.TextBox("Name", "Введите имя")
+    <p><input type="submit" value="Обновить" /></p>
+}
