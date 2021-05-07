@@ -72,18 +72,24 @@ namespace College_Web.Controllers
             }
             return NotFound();
         }
-        [HttpGet]
-        [ActionName("Edit")]
-        public async Task<IActionResult> ConfirmEdit(string? id)
-        {
-
-            return View();
-        }
-
-        [HttpPost]
         public async Task<IActionResult> Edit(string? id)
         {
-            return View();
+            if (id != null)
+            {
+                UserApp user = await db.UserApp.FindAsync(id);
+                if (user != null)
+                    return View(user);
+            }
+            return NotFound();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(UserApp user)
+        {
+            var student = await db.UserApp.FirstOrDefaultAsync(u => u.Id == user.Id);
+            student.UserName = user.UserName;
+            db.UserApp.Update(student);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
     }
 }

@@ -1,4 +1,18 @@
-﻿@{
+﻿@model UserApp
+@{
     ViewBag.Title = "Редактирование студента";
 }
-123
+<div>
+    <div class="alert alert-danger" role="alert">
+        Вы сейчас редактируете студента под ID @Html.DisplayFor(model => model.Id)
+    </div>
+    <form asp-action="Edit" asp-controller="Student" asp-route-id="@Model.Id">
+        <div class="form-group">
+            <label asp-for="UserName" class="control-label">Имя</label>
+            <input type="text" asp-for="UserName" value="@Model.UserName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Сохранить" class="btn btn-outline-warning" />
+        </div>
+    </form>
+</div>
