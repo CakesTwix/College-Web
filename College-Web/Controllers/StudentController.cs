@@ -72,5 +72,18 @@ namespace College_Web.Controllers
             }
             return NotFound();
         }
+        [HttpGet]
+        [ActionName("Edit")]
+        public async Task<IActionResult> ConfirmEdit(string? id)
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(string? id)
+        {
+            return View();
+        }
     }
 }
