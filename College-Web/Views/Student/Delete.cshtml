@@ -4,6 +4,9 @@
 }
 
 <div>
+    <div class="alert alert-danger" role="alert">
+        Вы уверены? Вернуть обратно будет невозможно.
+    </div>
     <dl class="dl-horizontal">
         <dt>Id</dt>
         <dd>
@@ -19,7 +22,7 @@
     <div>
         <form asp-controller="Student" asp-action="Delete" method="post">
             <div class="form-group">
-                <input type="submit" class="btn btn-default" value="Удалить" />
+                <input type="submit" class="btn btn-outline-danger" value="Удалить" />
             </div>
         </form>
     </div>
