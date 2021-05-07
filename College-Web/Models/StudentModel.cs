@@ -4,7 +4,7 @@ namespace College_Web.Models
 {
     public class StudentModel
     {
-        public int ID { get; set; }
+        public string ID { get; set; }
         public string Name { get; set; }
         public int Credits { get; set; }
         public int Hours { get; set; }
@@ -16,7 +16,7 @@ namespace College_Web.Models
     public class StudentGeneralInfo
     {
         [ForeignKey("StudentModel")]
-        public int ID { get; set; }
+        public string ID { get; set; }
         // Collage
         public string CollageEn { get; set; }
         public string OwnershipUk { get; set; }

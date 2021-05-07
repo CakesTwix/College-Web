@@ -1,4 +1,4 @@
-﻿
+﻿@model StudentGeneralInfo
 @{
     ViewData["Title"] = "Cabinet";
 }
@@ -10,6 +10,7 @@
 {
     <input type="hidden" value="@ViewBag.ID" name="ID" />
     <p>Введите свое имя: </p>
-    @Html.TextBox("Name", "Введите имя")
+    @Html.TextBox("Name")
     <p><input type="submit" value="Обновить" /></p>
 }
+@Html.EditorForModel(Model)
