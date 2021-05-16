@@ -5,7 +5,7 @@ using College_Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace Identity.Controllers
 {
@@ -22,15 +22,17 @@ namespace Identity.Controllers
             db = context;
         }
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
+            UserApp appUser = await userManager.FindByNameAsync(ClaimTypes.Name);
+            ViewBag.User = appUser;
             return View();
         }
         [HttpPost]
-        public ActionResult UpdateInfo(StudentModel studentModel)
+        public async Task<ActionResult> Index(StudentModel studentModel)
         {
             db.Student.Add(studentModel);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("/");
         }
         public ViewResult Create() => View();

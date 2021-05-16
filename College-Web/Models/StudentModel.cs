@@ -1,9 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace College_Web.Models
 {
     public class StudentModel
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string ID { get; set; }
         public string Name { get; set; }
         public int Credits { get; set; }
@@ -15,6 +18,7 @@ namespace College_Web.Models
     }
     public class StudentGeneralInfo
     {
+        [Key]
         [ForeignKey("StudentModel")]
         public string ID { get; set; }
         // Collage
