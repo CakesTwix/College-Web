@@ -21,7 +21,15 @@
     <input type="hidden" value="@User.Identity.Name" name="UserName" />
     <div class="form-floating mb-3">
         <label asp-for="Name" class="control-label">Имя</label>
-        <input type="text" asp-for="Name" class="form-control" value="@Model.Name"/>
+        <input type="text" asp-for="Name" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="Surname" class="control-label">Фимилия</label>
+        <input type="text" asp-for="Surname" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="Middle_Name" class="control-label">Отчество</label>
+        <input type="text" asp-for="Middle_Name" class="form-control" required />
     </div>
     <div class="form-group">
         <input type="submit" value="Отправить" class="btn btn-primary" />
