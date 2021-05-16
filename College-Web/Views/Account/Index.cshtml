@@ -1,8 +1,10 @@
 ﻿@model StudentModel
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<UserApp> userManager
+
 @{
     ViewData["Title"] = "Cabinet";
 }
-
 <div class="jumbotron">
     <h1>Привет, @User.Identity.Name</h1>
     <p>Заполни пожалуйста, если данных про тебя нету или устарели</p>
@@ -11,7 +13,8 @@
 <br>
 <h1>Ваша информация</h1>
 <form asp-action="Index" asp-controller="Account">
-    <input type="hidden" value="@ViewBag.ID" name="ID" />
+    <input type="hidden" value="@userManager.GetUserId(User)" name="ID" />
+    <input type="hidden" value="@User.Identity.Name" name="UserName" />
     <div class="form-floating mb-3">
         <label asp-for="Name" class="control-label">Имя</label>
         <input type="text" asp-for="Name" class="form-control" />

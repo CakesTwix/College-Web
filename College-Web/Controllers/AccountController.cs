@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
+using System;
 
 namespace Identity.Controllers
 {
@@ -24,16 +25,21 @@ namespace Identity.Controllers
 
         public async Task<ActionResult> Index()
         {
-            UserApp appUser = await userManager.FindByNameAsync(ClaimTypes.Name);
-            ViewBag.User = appUser;
             return View();
         }
         [HttpPost]
         public async Task<ActionResult> Index(StudentModel studentModel)
         {
-            db.Student.Add(studentModel);
-            await db.SaveChangesAsync();
-            return RedirectToAction("/");
+            if (await db.Student.FindAsync(studentModel.ID) == null) // Если Студента нету в БД - разрешаем добавлять новую запись
+            {
+                db.Student.Add(studentModel);
+                await db.SaveChangesAsync();
+            }
+            else // Иначе, обновляем информацию про студента
+            {
+
+            }
+            return View();
         }
         public ViewResult Create() => View();
 
