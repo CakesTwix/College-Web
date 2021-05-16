@@ -5,8 +5,6 @@ using College_Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using System.Security.Claims;
-using System;
 
 namespace Identity.Controllers
 {
@@ -25,7 +23,9 @@ namespace Identity.Controllers
 
         public async Task<ActionResult> Index()
         {
-            return View();
+            UserApp user = await userManager.FindByNameAsync(User.Identity.Name);
+            var view = await db.Student.FindAsync(user.Id);
+            return View(view);
         }
         [HttpPost]
         public async Task<ActionResult> Index(StudentModel studentModel)
@@ -34,10 +34,6 @@ namespace Identity.Controllers
             {
                 db.Student.Add(studentModel);
                 await db.SaveChangesAsync();
-            }
-            else // Иначе, обновляем информацию про студента
-            {
-
             }
             return View();
         }
