@@ -3,9 +3,9 @@
 }
 <link rel="stylesheet" type="text/css" href="~/css/StudentIndex.css" />
 
-<h1>Студенты:</h1>
 @if (ViewBag.student.Count != 0)
 {
+    <h1>Студенты:</h1>
     <table class="table">
         <thead>
             <tr>
@@ -28,4 +28,10 @@
             }
         </tbody>
     </table>
+}
+else
+{
+    <div class="alert alert-warning" role="alert">
+        Студентов на данный момент нету.
+    </div>
 }
