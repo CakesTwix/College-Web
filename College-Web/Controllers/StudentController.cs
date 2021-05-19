@@ -91,5 +91,32 @@ namespace College_Web.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        public async Task<IActionResult> EditStudent(string? id)
+        {
+            if (id != null)
+            {
+                StudentModel user = await db.Student.FindAsync(id);
+                if (user != null)
+                    return View(user);
+            }
+            return NotFound();
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditStudent(StudentModel user)
+        {
+            StudentModel student = await db.Student.FindAsync(user.ID);
+            student.UserName = user.UserName;
+            student.Name = user.Name;
+            student.Surname = user.Surname;
+            student.Middle_Name = user.Middle_Name;
+            student.Hours = user.Hours;
+            student.Assessment = user.Assessment;
+            student.Assessment_EKTC = user.Assessment_EKTC;
+            student.Note = user.Note;
+            db.Student.Update(student);
+            await db.SaveChangesAsync();
+
+            return Redirect("/Student");
+        }
     }
 }

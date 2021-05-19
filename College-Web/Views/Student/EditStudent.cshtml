@@ -1,0 +1,52 @@
+﻿@model StudentModel
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<UserApp> userManager
+
+@{
+    ViewData["Title"] = "Cabinet";
+}
+
+<div class="alert alert-danger" role="alert">
+    Вы сейчас редактируете студента
+</div>
+
+<br>
+<form asp-action="EditStudent" asp-controller="Student" asp-route-id="@Model.ID">
+    <input type="hidden" value="@Model.ID" name="ID" />
+    <input type="hidden" value="@Model.UserName" name="UserName" />
+    <div class="form-floating mb-3">
+        <label asp-for="Name" class="control-label">Имя</label>
+        <input type="text" asp-for="Name" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="Surname" class="control-label">Фимилия</label>
+        <input type="text" asp-for="Surname" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="Middle_Name" class="control-label">Отчество</label>
+        <input type="text" asp-for="Middle_Name" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="Credits" class="control-label">Credits</label>
+        <input type="text" asp-for="Credits" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="Hours" class="control-label">Часы</label>
+        <input type="number" asp-for="Hours" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="Assessment" class="control-label">Оценка</label>
+        <input type="number" asp-for="Assessment" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="Assessment_EKTC" class="control-label">EKTC</label>
+        <input type="text" asp-for="Assessment_EKTC" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="Note" class="control-label">Дополнительно</label>
+        <input type="text" asp-for="Note" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-primary" />
+    </div>
+</form>

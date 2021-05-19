@@ -21,7 +21,8 @@
                     <th scope="row">@user.ID</th>
                     <td>@user.Name</td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@user.ID" class="btn btn-primary">Редактировать</a>
+                        <a asp-action="Edit" asp-route-id="@user.ID" class="btn btn-primary">Редактировать аккаунт</a>
+                        <a asp-action="EditStudent" asp-route-id="@user.ID" class="btn btn-primary">Редактировать студента</a>
                         <a asp-action="Delete" asp-route-id="@user.ID" class="btn btn-danger">Удалить</a>
                     </td>
                 </tr>
