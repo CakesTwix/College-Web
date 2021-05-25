@@ -1,0 +1,191 @@
+﻿@model StudentGeneralInfo
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<UserApp> userManager
+
+@{
+    ViewData["Title"] = "Cabinet";
+}
+
+<div class="alert alert-danger" role="alert">
+    Вы сейчас редактируете студента
+</div>
+
+<br>
+<form asp-action="EditGeneralInfo" asp-controller="Student" asp-route-id="@Model.ID">
+    <input type="hidden" value="@Model.ID" name="ID" />
+    <div class="form-floating mb-3">
+        <label asp-for="CollageEn" class="control-label">Название учебного заведения(англ.)</label>
+        <input type="text" asp-for="CollageEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="OwnershipUk" class="control-label">Собственность(укр.)</label>
+        <input type="text" asp-for="OwnershipUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="OwnershipEn" class="control-label">Собственность(англ.)</label>
+        <input type="text" asp-for="OwnershipEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="FacultyUk" class="control-label">Факультет(укр.)</label>
+        <input type="text" asp-for="FacultyUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="FacultyEn" class="control-label">Факультет(англ.)</label>
+        <input type="number" asp-for="FacultyEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="EducationFormNameUk" class="control-label">Форма обучения(укр.)</label>
+        <input type="number" asp-for="EducationFormNameUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="EducationFormNameEn" class="control-label">Форма обучения(англ.)</label>
+        <input type="text" asp-for="EducationFormNameEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="StudyLanguageUk" class="control-label">Язык обучения(укр.)</label>
+        <input type="text" asp-for="StudyLanguageUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="StudyLanguageEn" class="control-label">Язык обучения(англ.)</label>
+        <input type="text" asp-for="StudyLanguageEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="DegreeUk" class="control-label">Степень(укр.)</label>
+        <input type="text" asp-for="DegreeUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="DegreeEn" class="control-label">Степень(англ.)</label>
+        <input type="text" asp-for="DegreeEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="SpecialityUk" class="control-label">Специальность(укр.)</label>
+        <input type="text" asp-for="SpecialityUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="SpecialityEn" class="control-label">Специальность(англ.)</label>
+        <input type="text" asp-for="SpecialityEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="ProfqualificationUk" class="control-label">Профквалификация(укр.)</label>
+        <input type="text" asp-for="ProfqualificationUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="ProfqualificationEn" class="control-label">Профквалификация(англ.)</label>
+        <input type="text" asp-for="ProfqualificationEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="FieldofStudyUk" class="control-label">Область изучения(укр.)</label>
+        <input type="text" asp-for="FieldofStudyUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="FieldofStudyEn" class="control-label">Область изучения(англ.)</label>
+        <input type="text" asp-for="FieldofStudyEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="LevelofQualificationUk" class="control-label">Уровень квалификации(укр.)</label>
+        <input type="text" asp-for="LevelofQualificationUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="LevelofQualificationEn" class="control-label">Уровень квалификации(англ.)</label>
+        <input type="text" asp-for="LevelofQualificationEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="years" class="control-label">Лет</label>
+        <input type="number" asp-for="years" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="months" class="control-label">Месяцев</label>
+        <input type="number" asp-for="months" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="FormNameUk" class="control-label">Форма обучения(укр.)</label>
+        <input type="text" asp-for="FormNameUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="FormNameEn" class="control-label">Форма обучения(англ.)</label>
+        <input type="text" asp-for="FormNameEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="MainUk" class="control-label">Main(укр.)</label>
+        <input type="text" asp-for="MainUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="MainEn" class="control-label">Main(англ.)</label>
+        <input type="text" asp-for="MainEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="AdditionalUk" class="control-label">Дополнительно(укр.)</label>
+        <input type="text" asp-for="AdditionalUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="AdditionalEn" class="control-label">Дополнительно(англ.)</label>
+        <input type="text" asp-for="AdditionalEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="AccessFurtherStudyUk" class="control-label">Доступ к дальнейшему изучению(укр.)</label>
+        <input type="text" asp-for="AccessFurtherStudyUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="AccessFurtherStudyEn" class="control-label">Доступ к дальнейшему изучению(англ.)</label>
+        <input type="text" asp-for="AccessFurtherStudyEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="ProfessionalStatusUk" class="control-label">Профессиональный статус(укр.)</label>
+        <input type="text" asp-for="ProfessionalStatusUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="ProfessionalStatusEn" class="control-label">Профессиональный статус(англ.)</label>
+        <input type="text" asp-for="ProfessionalStatusEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="PositionUk" class="control-label">Должность(укр.)</label>
+        <input type="text" asp-for="PositionUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="PositionEn" class="control-label">Должность(англ.)</label>
+        <input type="text" asp-for="PositionEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="SignerNameUk" class="control-label">Имя подписывающего лица(укр.)</label>
+        <input type="text" asp-for="SignerNameUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="SignerNameEn" class="control-label">Имя подписывающего лица(англ.)</label>
+        <input type="text" asp-for="SignerNameEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="SutisfyUk" class="control-label">Sutisfy(укр.)</label>
+        <input type="text" asp-for="SutisfyUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="SutisfyEn" class="control-label">Sutisfy(англ.)</label>
+        <input type="text" asp-for="SutisfyEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="KnowledgeUk" class="control-label">Знание(укр.)</label>
+        <input type="text" asp-for="KnowledgeUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="KnowledgeEn" class="control-label">Знание(англ.)</label>
+        <input type="text" asp-for="KnowledgeEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="UnderstandingUk" class="control-label">Понимание(укр.)</label>
+        <input type="text" asp-for="UnderstandingUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="UnderstandingEn" class="control-label">Понимание(англ.)</label>
+        <input type="text" asp-for="UnderstandingEn" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="JudgmentsUk" class="control-label">Суждения(укр.)</label>
+        <input type="text" asp-for="JudgmentsUk" class="form-control" required />
+    </div>
+    <div class="form-floating mb-3">
+        <label asp-for="JudgmentsEn" class="control-label">Суждения(англ.)</label>
+        <input type="text" asp-for="JudgmentsEn" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Отправить" class="btn btn-primary" />
+    </div>
+</form>

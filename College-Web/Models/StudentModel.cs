@@ -56,6 +56,7 @@ namespace College_Web.Models
         public string FormNameUk { get; set; }
         public string FormNameEn { get; set; }
         // AccessRequirements
+        public string MainUk { get; set; }
         public string MainEn { get; set; }
         public string AdditionalUk { get; set; }
         public string AdditionalEn { get; set; }

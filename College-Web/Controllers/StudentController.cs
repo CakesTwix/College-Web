@@ -118,5 +118,27 @@ namespace College_Web.Controllers
 
             return Redirect("/Student");
         }
+        public async Task<IActionResult> EditGeneralInfo(string? id)
+        {
+            if (id != null)
+            {
+                StudentGeneralInfo user = await db.StudentInfo.FindAsync(id);
+                if (user != null)
+                    return View(user);
+            }
+            return NotFound();
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditGeneralInfo(StudentGeneralInfo user)
+        {
+            StudentGeneralInfo student = await db.StudentInfo.FindAsync(user.ID);
+            // TODO:
+            // Доделать эту штуку
+            student.CollageEn = user.CollageEn;
+            db.StudentInfo.Update(student);
+            await db.SaveChangesAsync();
+
+            return Redirect("/Student");
+        }
     }
 }
