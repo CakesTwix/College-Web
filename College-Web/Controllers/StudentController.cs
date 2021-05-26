@@ -132,9 +132,49 @@ namespace College_Web.Controllers
         public async Task<IActionResult> EditGeneralInfo(StudentGeneralInfo user)
         {
             StudentGeneralInfo student = await db.StudentInfo.FindAsync(user.ID);
-            // TODO:
-            // Доделать эту штуку
             student.CollageEn = user.CollageEn;
+            student.OwnershipUk = user.OwnershipUk;
+            student.OwnershipEn = user.OwnershipEn;
+            student.FacultyUk = user.FacultyUk;
+            student.FacultyEn = user.FacultyEn;
+            student.EducationFormNameUk = user.EducationFormNameUk;
+            student.EducationFormNameEn = user.EducationFormNameEn;
+            student.StudyLanguageUk = user.StudyLanguageUk;
+            student.StudyLanguageEn = user.StudyLanguageEn;
+            student.DegreeUk = user.DegreeUk;
+            student.DegreeEn = user.DegreeEn;
+            student.SpecialityUk = user.SpecialityUk;
+            student.SpecialityEn = user.SpecialityEn;
+            student.ProfqualificationUk = user.ProfqualificationUk;
+            student.ProfqualificationEn = user.ProfqualificationEn;
+            student.FieldofStudyUk = user.FieldofStudyUk;
+            student.FieldofStudyEn = user.FieldofStudyEn;
+            student.LevelofQualificationUk = user.LevelofQualificationUk;
+            student.LevelofQualificationEn = user.LevelofQualificationEn;
+            student.years = user.years;
+            student.months = user.months;
+            student.FormNameUk = user.FormNameUk;
+            student.FormNameEn = user.FormNameEn;
+            student.MainUk = user.MainUk;
+            student.MainEn = user.MainEn;
+            student.AdditionalUk = user.AdditionalUk;
+            student.AdditionalEn = user.AdditionalEn;
+            student.AccessFurtherStudyUk = user.AccessFurtherStudyUk;
+            student.AccessFurtherStudyEn = user.AccessFurtherStudyEn;
+            student.ProfessionalStatusUk = user.ProfessionalStatusUk;
+            student.ProfessionalStatusEn = user.ProfessionalStatusEn;
+            student.PositionUk = user.PositionUk;
+            student.PositionEn = user.PositionEn;
+            student.SignerNameUk = user.SignerNameUk;
+            student.SignerNameEn = user.SignerNameEn;
+            student.SutisfyUk = user.SutisfyUk;
+            student.SutisfyEn = user.SutisfyEn;
+            student.KnowledgeUk = user.KnowledgeUk;
+            student.KnowledgeEn = user.KnowledgeEn;
+            student.UnderstandingUk = user.UnderstandingUk;
+            student.UnderstandingEn = user.UnderstandingEn;
+            student.JudgmentsUk = user.JudgmentsUk;
+            student.JudgmentsEn = user.JudgmentsEn;
             db.StudentInfo.Update(student);
             await db.SaveChangesAsync();
 
