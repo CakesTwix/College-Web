@@ -21,8 +21,8 @@ namespace College_Web.Controllers
             this.db = db;
         }
 
-        // GET api/<PeopleController>/User/UserName
-        [HttpGet("User/{name}")]
+        // GET api/<PeopleController>/GetUser/UserName
+        [HttpGet("GetUser/{name}")]
         public async Task<UserApp> GetUserAsync(string name)
         {
             UserApp appUser = await userManager.FindByNameAsync(name);
@@ -36,9 +36,9 @@ namespace College_Web.Controllers
             
         }
 
-        // GET api/<PeopleController>/Student/id
+        // GET api/<PeopleController>/GetStudentInfo/id
         // id - Айди студента
-        [HttpGet("Student/{id}")]
+        [HttpGet("GetStudentInfo/{id}")]
         public async Task<StudentGeneralInfo> GetStudentInfoAsync(string id)
         {
             StudentGeneralInfo student = await db.StudentInfo.FindAsync(id);
