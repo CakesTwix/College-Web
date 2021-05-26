@@ -13,15 +13,17 @@ namespace College_Web.Controllers
     public class PeopleController : ControllerBase
     {
         private UserManager<UserApp> userManager;
+        private AppIdentityDbContext db;
 
-        public PeopleController(UserManager<UserApp> usrMgr)
+        public PeopleController(UserManager<UserApp> usrMgr, AppIdentityDbContext db)
         {
             userManager = usrMgr;
+            this.db = db;
         }
 
-        // GET api/<PeopleController>/UserName
-        [HttpGet("{name}")]
-        public async Task<UserApp> GetAsync(string name)
+        // GET api/<PeopleController>/User/UserName
+        [HttpGet("User/{name}")]
+        public async Task<UserApp> GetUserAsync(string name)
         {
             UserApp appUser = await userManager.FindByNameAsync(name);
 
@@ -32,6 +34,22 @@ namespace College_Web.Controllers
 
             return appUser;
             
+        }
+
+        // GET api/<PeopleController>/Student/id
+        // id - Айди студента
+        [HttpGet("Student/{id}")]
+        public async Task<StudentGeneralInfo> GetStudentInfoAsync(string id)
+        {
+            StudentGeneralInfo student = await db.StudentInfo.FindAsync(id);
+
+            if (student == null)
+            {
+                return null;
+            }
+
+            return student;
+
         }
 
         // POST api/<PeopleController>
