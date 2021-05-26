@@ -19,13 +19,6 @@ namespace College_Web.Controllers
             userManager = usrMgr;
         }
 
-        // GET: api/<PeopleController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
         // GET api/<PeopleController>/UserName
         [HttpGet("{name}")]
         public async Task<UserApp> GetAsync(string name)
