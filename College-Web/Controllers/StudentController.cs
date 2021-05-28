@@ -98,6 +98,16 @@ namespace College_Web.Controllers
                 StudentModel user = await db.Student.FindAsync(id);
                 if (user != null)
                     return View(user);
+                else
+                {
+                    var userApp = await db.UserApp.FirstOrDefaultAsync(u => u.Id == id);
+                    StudentModel student = new StudentModel();
+                    student.ID = id;
+                    student.UserName = userApp.UserName;
+                    await db.Student.AddAsync(student);
+                    await db.SaveChangesAsync();
+                    return View(student);
+                }
             }
             return NotFound();
         }
@@ -125,6 +135,14 @@ namespace College_Web.Controllers
                 StudentGeneralInfo user = await db.StudentInfo.FindAsync(id);
                 if (user != null)
                     return View(user);
+                else
+                {
+                    StudentGeneralInfo student = new StudentGeneralInfo();
+                    student.ID = id;
+                    await db.StudentInfo.AddAsync(student);
+                    await db.SaveChangesAsync();
+                    return View(student);
+                }
             }
             return NotFound();
         }
