@@ -147,6 +147,7 @@ namespace College_Web.Controllers
         public async Task<IActionResult> EditGeneralInfo(StudentGeneralInfo user)
         {
             StudentGeneralInfo student = await db.StudentInfo.FindAsync(user.ID);
+            student.CollageUk = user.CollageUk;
             student.CollageEn = user.CollageEn;
             student.OwnershipUk = user.OwnershipUk;
             student.OwnershipEn = user.OwnershipEn;

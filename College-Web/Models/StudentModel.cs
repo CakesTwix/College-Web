@@ -21,6 +21,7 @@ namespace College_Web.Models
         [ForeignKey("StudentModel")]
         public string ID { get; set; }
         // Collage
+        public string CollageUk { get; set; }
         public string CollageEn { get; set; }
         public string OwnershipUk { get; set; }
         public string OwnershipEn { get; set; }
