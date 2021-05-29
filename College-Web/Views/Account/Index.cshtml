@@ -8,30 +8,4 @@
 
 <div class="alert alert-primary" role="alert">
     <h1>Привет, @User.Identity.Name</h1>
-    <p>Заполни пожалуйста эти поля, чтобы активировать аккаунт.</p>
 </div>
-<div class="alert alert-danger" role="alert">
-    Внимание! Вы позже не сможете поменять данные, пишите с умом!
-</div>
-
-<br>
-<h1>Ваша информация</h1>
-<form asp-action="Index" asp-controller="Account" asp-route-id="@userManager.GetUserId(User)">
-    <input type="hidden" value="@userManager.GetUserId(User)" name="ID" />
-    <input type="hidden" value="@User.Identity.Name" name="UserName" />
-    <div class="form-floating mb-3">
-        <label asp-for="Name" class="control-label">Имя</label>
-        <input type="text" asp-for="Name" class="form-control" required />
-    </div>
-    <div class="form-floating mb-3">
-        <label asp-for="Surname" class="control-label">Фимилия</label>
-        <input type="text" asp-for="Surname" class="form-control" required />
-    </div>
-    <div class="form-floating mb-3">
-        <label asp-for="Middle_Name" class="control-label">Отчество</label>
-        <input type="text" asp-for="Middle_Name" class="form-control" required />
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Отправить" class="btn btn-primary" />
-    </div>
-</form>

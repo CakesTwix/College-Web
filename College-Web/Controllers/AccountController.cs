@@ -76,7 +76,9 @@ namespace Identity.Controllers
                 UserApp appUser = new UserApp
                 {
                     UserName = user.Name,
-                    Email = user.Email
+                    Email = user.Email,
+                    Surname = user.Surname,
+                    Middle_Name = user.Middle_Name,
                 };
 
                 var result = await userManager.CreateAsync(appUser, user.Password);

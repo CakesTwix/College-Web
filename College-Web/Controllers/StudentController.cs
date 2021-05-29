@@ -37,6 +37,8 @@ namespace College_Web.Controllers
                     {
                         ID = user.Id,
                         Name = user.UserName,
+                        Surname = user.Surname,
+                        Middle_Name = user.Middle_Name,
                     });
                 }
             }

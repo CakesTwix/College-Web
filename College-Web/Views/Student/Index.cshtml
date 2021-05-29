@@ -11,24 +11,28 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Имя</th>
+                <th scope="col">Фамилия</th>
+                <th scope="col">Отчество</th>
                 <th scope="col">Действия</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var user in ViewBag.student)
             {
-                <tr>
-                    <th scope="row">@user.ID</th>
-                    <td>@user.Name</td>
-                    <td>
-                        <div class="btn-group" role="group">
-                            <a asp-action="Edit" asp-route-id="@user.ID" class="btn btn-primary">Редактировать аккаунт</a>
-                            <a asp-action="EditStudent" asp-route-id="@user.ID" class="btn btn-primary">Редактировать студента</a>
-                            <a asp-action="EditGeneralInfo" asp-route-id="@user.ID" class="btn btn-primary">Подробнее</a>
-                            <a asp-action="Delete" asp-route-id="@user.ID" class="btn btn-danger">Удалить</a>
-                        </div>
-                    </td>
-                </tr>
+            <tr>
+                <th scope="row">@user.ID</th>
+                <td>@user.Name</td>
+                <td>@user.Surname</td>
+                <td>@user.Middle_Name</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a asp-action="Edit" asp-route-id="@user.ID" class="btn btn-primary">Редактировать аккаунт</a>
+                        <a asp-action="EditStudent" asp-route-id="@user.ID" class="btn btn-primary">Редактировать студента</a>
+                        <a asp-action="EditGeneralInfo" asp-route-id="@user.ID" class="btn btn-primary">Подробнее</a>
+                        <a asp-action="Delete" asp-route-id="@user.ID" class="btn btn-danger">Удалить</a>
+                    </div>
+                </td>
+            </tr>
             }
         </tbody>
     </table>
