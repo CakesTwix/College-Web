@@ -20,16 +20,16 @@
             @foreach (var user in ViewBag.student)
             {
             <tr>
-                <th scope="row">@user.ID</th>
+                <th scope="row">@user.Id</th>
                 <td>@user.Name</td>
                 <td>@user.Surname</td>
                 <td>@user.Middle_Name</td>
                 <td>
                     <div class="btn-group" role="group">
-                        <a asp-action="Edit" asp-route-id="@user.ID" class="btn btn-primary">Редактировать аккаунт</a>
-                        <a asp-action="EditStudent" asp-route-id="@user.ID" class="btn btn-primary">Редактировать студента</a>
-                        <a asp-action="EditGeneralInfo" asp-route-id="@user.ID" class="btn btn-primary">Подробнее</a>
-                        <a asp-action="Delete" asp-route-id="@user.ID" class="btn btn-danger">Удалить</a>
+                        <a asp-action="Edit" asp-route-id="@user.Id" class="btn btn-primary">Редактировать аккаунт</a>
+                        <a asp-action="EditStudent" asp-route-id="@user.Id" class="btn btn-primary">Редактировать студента</a>
+                        <a asp-action="EditGeneralInfo" asp-route-id="@user.Id" class="btn btn-primary">Подробнее</a>
+                        <a asp-action="Delete" asp-route-id="@user.Id" class="btn btn-danger">Удалить</a>
                     </div>
                 </td>
             </tr>

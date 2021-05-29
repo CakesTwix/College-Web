@@ -8,10 +8,6 @@ namespace College_Web.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string ID { get; set; }
-        public string UserName { get; set; }
-        public string Surname { get; set; }
-        public string Name { get; set; }
-        public string Middle_Name { get; set; }
         public int Credits { get; set; }
         public int Hours { get; set; }
         public int Assessment { get; set; }

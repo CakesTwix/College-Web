@@ -56,9 +56,9 @@ namespace College_Web.Controllers
         // GET api/<PeopleController>/GetAllStudents/
         // id - Айди студента
         [HttpGet("GetAllStudents")]
-        public List<StudentModel> GetAllStudentsAsync()
+        public List<UserApp> GetAllStudentsAsync()
         {
-            var student = db.Student.ToList();
+            var student = db.UserApp.ToList();
             return student;
         }
 

@@ -23,7 +23,7 @@ namespace College_Web.Controllers
         public async Task<IActionResult> Index()
         {
             var role = await roleManager.FindByNameAsync("Student");
-            var student = new List<StudentModel>();
+            var student = new List<UserApp>();
 
             // Retrieve all the Users
             foreach (var user in userManager.Users)
@@ -33,10 +33,10 @@ namespace College_Web.Controllers
                 // object is then passed to the view for display
                 if (await userManager.IsInRoleAsync(user, role.Name))
                 {
-                    student.Add(new StudentModel
+                    student.Add(new UserApp
                     {
-                        ID = user.Id,
-                        Name = user.UserName,
+                        Id = user.Id,
+                        Name = user.Name,
                         Surname = user.Surname,
                         Middle_Name = user.Middle_Name,
                     });
@@ -105,7 +105,6 @@ namespace College_Web.Controllers
                     var userApp = await db.UserApp.FirstOrDefaultAsync(u => u.Id == id);
                     StudentModel student = new StudentModel();
                     student.ID = id;
-                    student.UserName = userApp.UserName;
                     await db.Student.AddAsync(student);
                     await db.SaveChangesAsync();
                     return View(student);
@@ -117,10 +116,6 @@ namespace College_Web.Controllers
         public async Task<IActionResult> EditStudent(StudentModel user)
         {
             StudentModel student = await db.Student.FindAsync(user.ID);
-            student.UserName = user.UserName;
-            student.Name = user.Name;
-            student.Surname = user.Surname;
-            student.Middle_Name = user.Middle_Name;
             student.Hours = user.Hours;
             student.Assessment = user.Assessment;
             student.Assessment_EKTC = user.Assessment_EKTC;
