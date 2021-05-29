@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using College_Web.Models;
 using Microsoft.AspNetCore.Identity;
@@ -50,6 +51,15 @@ namespace College_Web.Controllers
 
             return student;
 
+        }
+
+        // GET api/<PeopleController>/GetAllStudents/
+        // id - Айди студента
+        [HttpGet("GetAllStudents")]
+        public List<StudentGeneralInfo> GetAllStudentsAsync()
+        {
+            var student = db.StudentInfo.ToList();
+            return student;
         }
 
         // POST api/<PeopleController>
