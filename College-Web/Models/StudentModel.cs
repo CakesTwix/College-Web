@@ -8,17 +8,19 @@ namespace College_Web.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string ID { get; set; }
+        public string Subject { get; set; }
+        public string Teacher { get; set; }
         public int Credits { get; set; }
         public int Hours { get; set; }
         public int Assessment { get; set; }
         public string Assessment_EKTC { get; set; }
         public string Note { get; set; }
-        public virtual StudentGeneralInfo Info { get; set; }
+        public string userAppId { get; set; }
+        public UserApp userApp { get; set; }
     }
     public class StudentGeneralInfo
     {
         [Key]
-        [ForeignKey("StudentModel")]
         public string ID { get; set; }
         // Collage
         public string CollageUk { get; set; }
@@ -80,6 +82,6 @@ namespace College_Web.Models
         // Judgments
         public string JudgmentsUk { get; set; }
         public string JudgmentsEn { get; set; }
-        public virtual StudentModel StudentModel { get; set; }
+        public UserApp userApp { get; set; }
     }
 }

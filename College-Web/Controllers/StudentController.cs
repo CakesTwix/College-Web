@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace College_Web.Controllers
@@ -97,9 +98,13 @@ namespace College_Web.Controllers
         {
             if (id != null)
             {
-                StudentModel user = await db.Student.FindAsync(id);
+                List<StudentModel> user = new List<StudentModel>();
+                user = db.Student.Where(u => u.userApp.Id == id).ToList();
                 if (user != null)
-                    return View(user);
+                {
+                    ViewBag.Student = user;
+                    return View();
+                }
                 else
                 {
                     var userApp = await db.UserApp.FirstOrDefaultAsync(u => u.Id == id);
@@ -112,18 +117,42 @@ namespace College_Web.Controllers
             }
             return NotFound();
         }
+        public async Task<IActionResult> EditStudentModel(string? id)
+        {
+            if (id != null)
+            {
+                StudentModel user = await db.Student.FindAsync(id);
+                if (user != null)
+                {
+                    return View(user);
+                }
+            }
+            return NotFound();
+        }
         [HttpPost]
-        public async Task<IActionResult> EditStudent(StudentModel user)
+        public async Task<IActionResult> EditStudentModel(StudentModel user)
         {
             StudentModel student = await db.Student.FindAsync(user.ID);
+            student.Subject = user.Subject;
+            student.Teacher = user.Teacher;
             student.Hours = user.Hours;
             student.Assessment = user.Assessment;
             student.Assessment_EKTC = user.Assessment_EKTC;
             student.Note = user.Note;
+            student.Credits = user.Credits;
             db.Student.Update(student);
             await db.SaveChangesAsync();
 
             return Redirect("/Student");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddStudentModel(StudentModel user)
+        {
+            await db.Student.AddAsync(user);
+            await db.SaveChangesAsync();
+
+            return Redirect("/");
         }
         public async Task<IActionResult> EditGeneralInfo(string? id)
         {

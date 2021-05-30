@@ -1,4 +1,4 @@
-﻿@model StudentModel
+﻿@model StudentModel 
 @using Microsoft.AspNetCore.Identity;
 @inject UserManager<UserApp> userManager
 
@@ -6,16 +6,14 @@
     ViewData["Title"] = "Cabinet";
 }
 
-<div class="alert alert-info" role="alert">
-    Добавление предмета и их редактирование
+<div class="alert alert-danger" role="alert">
+    Вы сейчас редактируете студента
 </div>
-<form asp-action="AddStudentModel" asp-controller="Student">
-    @{
-        string id = Context.Request.Path;
-        // @id.Split('/')[3]
-    }
-    <input type="hidden" value="@id.Split('/')[3]" name="userAppId" />
 
+<br>
+
+<form asp-action="EditStudentModel" asp-controller="Student">
+    <input type="hidden" value="@Model.ID" name="ID" />
     <div class="form-floating mb-3">
         <label asp-for="Subject" class="control-label">Предмет</label>
         <input type="text" asp-for="Subject" class="form-control" required />
@@ -48,30 +46,3 @@
         <input type="submit" value="Отправить" class="btn btn-primary" />
     </div>
 </form>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Предмет</th>
-            <th scope="col">Препод</th>
-            <th scope="col">Действия</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var user in ViewBag.Student)
-        {
-            <tr>
-                <th scope="row">@user.ID</th>
-                <td>@user.Subject</td>
-                <td>@user.Teacher</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a asp-action="EditStudentModel" asp-route-id="@user.ID" class="btn btn-primary">Редактировать</a>
-                        <a asp-action="DeleteStudentModel" asp-route-id="@user.ID" class="btn btn-danger">Удалить</a>
-                    </div>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
