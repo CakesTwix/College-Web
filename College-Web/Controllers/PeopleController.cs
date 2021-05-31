@@ -63,21 +63,59 @@ namespace College_Web.Controllers
         }
 
         // POST api/<PeopleController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpGet("UpdateStudentInfo")]
+        public async Task UpdateStudentInfoAsync([FromQuery] StudentGeneralInfo studentGeneralInfo)
         {
-        }
-
-        // PUT api/<PeopleController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<PeopleController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            StudentGeneralInfo student = await db.StudentInfo.FindAsync(studentGeneralInfo.ID);
+            if (student != null)
+            {
+                student.CollageUk = studentGeneralInfo.CollageUk;
+                student.CollageEn = studentGeneralInfo.CollageEn;
+                student.OwnershipUk = studentGeneralInfo.OwnershipUk;
+                student.OwnershipEn = studentGeneralInfo.OwnershipEn;
+                student.FacultyUk = studentGeneralInfo.FacultyUk;
+                student.FacultyEn = studentGeneralInfo.FacultyEn;
+                student.EducationFormNameUk = studentGeneralInfo.EducationFormNameUk;
+                student.EducationFormNameEn = studentGeneralInfo.EducationFormNameEn;
+                student.StudyLanguageUk = studentGeneralInfo.StudyLanguageUk;
+                student.StudyLanguageEn = studentGeneralInfo.StudyLanguageEn;
+                student.DegreeUk = studentGeneralInfo.DegreeUk;
+                student.DegreeEn = studentGeneralInfo.DegreeEn;
+                student.SpecialityUk = studentGeneralInfo.SpecialityUk;
+                student.SpecialityEn = studentGeneralInfo.SpecialityEn;
+                student.ProfqualificationUk = studentGeneralInfo.ProfqualificationUk;
+                student.ProfqualificationEn = studentGeneralInfo.ProfqualificationEn;
+                student.FieldofStudyUk = studentGeneralInfo.FieldofStudyUk;
+                student.FieldofStudyEn = studentGeneralInfo.FieldofStudyEn;
+                student.LevelofQualificationUk = studentGeneralInfo.LevelofQualificationUk;
+                student.LevelofQualificationEn = studentGeneralInfo.LevelofQualificationEn;
+                student.years = studentGeneralInfo.years;
+                student.months = studentGeneralInfo.months;
+                student.FormNameUk = studentGeneralInfo.FormNameUk;
+                student.FormNameEn = studentGeneralInfo.FormNameEn;
+                student.MainUk = studentGeneralInfo.MainUk;
+                student.MainEn = studentGeneralInfo.MainEn;
+                student.AdditionalUk = studentGeneralInfo.AdditionalUk;
+                student.AdditionalEn = studentGeneralInfo.AdditionalEn;
+                student.AccessFurtherStudyUk = studentGeneralInfo.AccessFurtherStudyUk;
+                student.AccessFurtherStudyEn = studentGeneralInfo.AccessFurtherStudyEn;
+                student.ProfessionalStatusUk = studentGeneralInfo.ProfessionalStatusUk;
+                student.ProfessionalStatusEn = studentGeneralInfo.ProfessionalStatusEn;
+                student.PositionUk = studentGeneralInfo.PositionUk;
+                student.PositionEn = studentGeneralInfo.PositionEn;
+                student.SignerNameUk = studentGeneralInfo.SignerNameUk;
+                student.SignerNameEn = studentGeneralInfo.SignerNameEn;
+                student.SutisfyUk = studentGeneralInfo.SutisfyUk;
+                student.SutisfyEn = studentGeneralInfo.SutisfyEn;
+                student.KnowledgeUk = studentGeneralInfo.KnowledgeUk;
+                student.KnowledgeEn = studentGeneralInfo.KnowledgeEn;
+                student.UnderstandingUk = studentGeneralInfo.UnderstandingUk;
+                student.UnderstandingEn = studentGeneralInfo.UnderstandingEn;
+                student.JudgmentsUk = studentGeneralInfo.JudgmentsUk;
+                student.JudgmentsEn = studentGeneralInfo.JudgmentsEn;
+                db.StudentInfo.Update(student);
+                await db.SaveChangesAsync();
+            }
         }
     }
 }
