@@ -12,7 +12,6 @@
 <form asp-action="AddStudentModel" asp-controller="Student">
     @{
         string id = Context.Request.Path;
-        // @id.Split('/')[3]
     }
     <input type="hidden" value="@id.Split('/')[3]" name="userAppId" />
 

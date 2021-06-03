@@ -38,6 +38,7 @@ namespace College_Web.Controllers
                     {
                         Id = user.Id,
                         Name = user.Name,
+                        First_Name = user.First_Name,
                         Surname = user.Surname,
                         Middle_Name = user.Middle_Name,
                     });
@@ -90,6 +91,9 @@ namespace College_Web.Controllers
         {
             var student = await db.UserApp.FirstOrDefaultAsync(u => u.Id == user.Id);
             student.UserName = user.UserName;
+            student.First_Name = user.First_Name;
+            student.Surname = user.Surname;
+            student.Middle_Name = user.Middle_Name;
             db.UserApp.Update(student);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

@@ -77,7 +77,7 @@ namespace Identity.Controllers
                 {
                     UserName = user.Name,
                     Name = user.Name,
-                    Email = user.Email,
+                    First_Name = user.First_Name,
                     Surname = user.Surname,
                     Middle_Name = user.Middle_Name,
                 };
