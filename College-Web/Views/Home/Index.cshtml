@@ -2,7 +2,7 @@
     ViewData["Title"] = "Home Page";
 }
 <link rel="stylesheet" type="text/css" href="~/css/Index.css" />
-<div class="otk-image d-flex flex-column justify-content-between align-self-stretch" style="height: 100vh; width: 100vh">
+<div class="otk-image d-flex flex-column justify-content-between align-self-stretch">
     <h1 class="welcome">Добро пожаловать в College-Web</h1>
     @if (User.Identity.IsAuthenticated == false)
     {
@@ -19,7 +19,7 @@
     </span>
 </div>
 
-<div class="d-flex flex-row justify-content-between align-self-stretch" style="height: 100vh; width: 100vh">
+<div class="d-flex flex-row justify-content-between align-self-stretch">
     <div class="p-0">
         <h1 style="font-size: 60px; text-align: center; margin-top: 100px">Легкий доступ и просмотр данных студентов вашего учебного учереждения!</h1>
         <h1 style="font-size: 60px; text-align: right; margin-top: 100px">Простота использования.</h1>
